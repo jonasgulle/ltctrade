@@ -1,0 +1,20 @@
+<div class="jumbotron">
+	<h2>Litecoin Trade</h2>
+	<p class="lead">Skriv in summan i SEK</p>
+	<form ng-submit="getPrice()">
+		<label><input type="text" id="sek" name="SEK" placeholder="SEK" ng-model="sek"/></label>
+	</form>
+	<img src="images/loader.gif" alt="Loading" ng-show="gettingPrices"/>
+	<div ng-show="havePrices">
+		<hr style="border-color: red;"/>
+		<p><strong>Köp:</strong> {{bid.price}} USD <strong>Sälj:</strong> {{ask.price}} USD</p>
+		<p>Antal LTC: <strong>{{numLtc}}</strong> <small>(kurs {{sekToUsd}} SEK/USD)</small></p>
+		<hr style="border-color: red;"/>
+		<p>Köparen erhåller <strong>{{numLtcOut}}</strong> LTC efter dina <strong>{{advance}}%</strong></p>
+	</div>
+</div>
+
+<div class="footer">
+	<p ng-show="havePrices">Senast köp {{bid.date}}, senast sälj {{ask.date}}</p>
+	<p>Norrfors ♥ LTC <small>(aktuell kurs hämtas via BTC-E Trade API)</small></p>
+</div>
